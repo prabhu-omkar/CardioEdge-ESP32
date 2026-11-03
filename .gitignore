@@ -1,0 +1,8 @@
+.venv/
+.tools/
+build/
+logs/
+data/
+__pycache__/
+.pytest_cache/
+firmware/.pio/

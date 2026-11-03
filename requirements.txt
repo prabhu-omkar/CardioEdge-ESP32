@@ -1,0 +1,11 @@
+tensorflow==2.20.*
+wfdb
+scikit-learn
+scipy
+numpy
+pandas
+matplotlib
+platformio
+ziglang
+pytest
+pyserial
