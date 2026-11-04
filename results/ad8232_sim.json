@@ -1,0 +1,30 @@
+{
+ "Ideal (no front end)": {
+  "sensitivity": 0.9927588849893098,
+  "ppv": 0.9990865540759987,
+  "beats_analysed": 0.955652843649925,
+  "accuracy": 0.6906888431593016,
+  "macro_f1": 0.47091021571271163
+ },
+ "Typical AD8232 + ESP32": {
+  "sensitivity": 0.9929807575940942,
+  "ppv": 0.9990867579908675,
+  "beats_analysed": 0.9166751099313056,
+  "accuracy": 0.685675747390766,
+  "macro_f1": 0.5059286658821978
+ },
+ "Noisy ADC, strong mains pickup": {
+  "sensitivity": 0.992940417120497,
+  "ppv": 0.9991272756794057,
+  "beats_analysed": 0.9162022494680312,
+  "accuracy": 0.6846693364603845,
+  "macro_f1": 0.5056009623251668
+ },
+ "Gain 30% lower than assumed": {
+  "sensitivity": 0.992698374278914,
+  "ppv": 0.9991067803491677,
+  "beats_analysed": 0.9658045161551871,
+  "accuracy": 0.668549115109273,
+  "macro_f1": 0.46097003811374876
+ }
+}
