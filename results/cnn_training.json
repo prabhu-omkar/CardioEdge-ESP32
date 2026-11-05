@@ -1,0 +1,6 @@
+{
+ "best_epoch": 4,
+ "val_macro_f1": 0.570408295601031,
+ "params": 9574,
+ "tflite_kb": 17.1484375
+}
