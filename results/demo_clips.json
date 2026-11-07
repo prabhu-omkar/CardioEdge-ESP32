@@ -1,0 +1,37 @@
+[
+ {
+  "clip": "Normal",
+  "record": 100,
+  "start_s": 10.0,
+  "class_share": 1.0
+ },
+ {
+  "clip": "PVC",
+  "record": 233,
+  "start_s": 115.0,
+  "class_share": 0.388
+ },
+ {
+  "clip": "AFib",
+  "record": 202,
+  "start_s": 1180.0,
+  "class_share": 1.0
+ },
+ {
+  "clip": "LBBB",
+  "record": 214,
+  "start_s": 10.0,
+  "class_share": 0.987
+ },
+ {
+  "clip": "RBBB",
+  "record": 212,
+  "start_s": 0.0,
+  "class_share": 1.0
+ },
+ {
+  "clip": "Noise",
+  "record": 100,
+  "note": "electrode motion added from 25 s to 45 s"
+ }
+]
