@@ -1,0 +1,216 @@
+{
+ "booted": true,
+ "done": true,
+ "clips": [
+  {
+   "clip": "Demo Normal",
+   "host": {
+    "detected": 69,
+    "analysed": 59,
+    "rhythm": "Normal",
+    "cnn": [
+     59,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "rf": [
+     59,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "esp32": {
+    "detected": "69",
+    "analysed": "59",
+    "alert_beats": "0",
+    "rhythm": "Normal",
+    "rhythm_rf": "Normal",
+    "cnn": "59 0 0 0 0 0",
+    "rf": "59 0 0 0 0 0"
+   }
+  },
+  {
+   "clip": "Demo PVC",
+   "host": {
+    "detected": 96,
+    "analysed": 85,
+    "rhythm": "PVC",
+    "cnn": [
+     20,
+     33,
+     29,
+     0,
+     0,
+     3
+    ],
+    "rf": [
+     20,
+     37,
+     28,
+     0,
+     0,
+     0
+    ]
+   },
+   "esp32": {
+    "detected": "96",
+    "analysed": "85",
+    "alert_beats": "64",
+    "rhythm": "PVC",
+    "rhythm_rf": "AFib",
+    "cnn": "20 33 29 0 0 3",
+    "rf": "20 37 28 0 0 0"
+   }
+  },
+  {
+   "clip": "Demo AFib",
+   "host": {
+    "detected": 106,
+    "analysed": 95,
+    "rhythm": "AFib",
+    "cnn": [
+     66,
+     0,
+     22,
+     0,
+     0,
+     7
+    ],
+    "rf": [
+     73,
+     0,
+     22,
+     0,
+     0,
+     0
+    ]
+   },
+   "esp32": {
+    "detected": "106",
+    "analysed": "95",
+    "alert_beats": "2",
+    "rhythm": "AFib",
+    "rhythm_rf": "AFib",
+    "cnn": "66 0 22 0 0 7",
+    "rf": "73 0 22 0 0 0"
+   }
+  },
+  {
+   "clip": "Demo LBBB",
+   "host": {
+    "detected": 71,
+    "analysed": 61,
+    "rhythm": "Normal",
+    "cnn": [
+     51,
+     1,
+     0,
+     9,
+     0,
+     0
+    ],
+    "rf": [
+     43,
+     1,
+     0,
+     17,
+     0,
+     0
+    ]
+   },
+   "esp32": {
+    "detected": "71",
+    "analysed": "61",
+    "alert_beats": "0",
+    "rhythm": "Normal",
+    "rhythm_rf": "Normal",
+    "cnn": "50 1 0 10 0 0",
+    "rf": "43 1 0 17 0 0"
+   }
+  },
+  {
+   "clip": "Demo RBBB",
+   "host": {
+    "detected": 84,
+    "analysed": 74,
+    "rhythm": "Normal",
+    "cnn": [
+     73,
+     0,
+     0,
+     0,
+     1,
+     0
+    ],
+    "rf": [
+     33,
+     0,
+     0,
+     0,
+     41,
+     0
+    ]
+   },
+   "esp32": {
+    "detected": "84",
+    "analysed": "74",
+    "alert_beats": "0",
+    "rhythm": "Normal",
+    "rhythm_rf": "RBBB",
+    "cnn": "73 0 0 0 1 0",
+    "rf": "33 0 0 0 41 0"
+   }
+  },
+  {
+   "clip": "Demo Noise",
+   "host": {
+    "detected": 79,
+    "analysed": 25,
+    "rhythm": "Normal",
+    "cnn": [
+     25,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "rf": [
+     25,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "esp32": {
+    "detected": "79",
+    "analysed": "25",
+    "alert_beats": "0",
+    "rhythm": "Normal",
+    "rhythm_rf": "Normal",
+    "cnn": "25 0 0 0 0 0",
+    "rf": "25 0 0 0 0 0"
+   }
+  }
+ ],
+ "model": {
+  "arena_bytes": "3652",
+  "free_heap": "308788"
+ },
+ "vectors": {
+  "count": "240",
+  "cnn_match": "240",
+  "rf_match": "240",
+  "max_score_diff": "6"
+ },
+ "failures": [],
+ "passed": true
+}
