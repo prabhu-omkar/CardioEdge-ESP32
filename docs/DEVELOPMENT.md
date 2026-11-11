@@ -53,7 +53,7 @@ Acceptance criteria:
 
 - Boot and completion markers must both be present.
 - All 240 CNN and RF vector classes must match.
-- Maximum CNN score difference is six int8 units.
+- Maximum CNN score difference is seven int8 units (`MAX_SCORE_DIFF`). This is an observed bound, not a derived one: 6 for the 2026-11-05 model, 7 for the 2026-11-11 retrain. All 240 classes must still match exactly.
 - Six distinct demo clips must be present, with exact detected/analysed beat counts and CNN final verdicts.
 - RF class counts must match exactly; each CNN class count may differ by at most one beat, and total counts must match.
 

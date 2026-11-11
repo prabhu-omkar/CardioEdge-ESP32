@@ -27,7 +27,7 @@ An ESP32 reads a single-lead ECG from an AD8232 front end. It filters the signal
 | ESP32 firmware | Builds. Models and pipeline verified on an emulated ESP32 (QEMU). |
 | AD8232, OLED, buzzer, Wi-Fi on a real board | **Not tested yet.** No hardware was available. |
 
-Normal, PVC and AFib work well enough to demonstrate. LBBB, RBBB and Other are unreliable on new patients. See [Known limitations](#known-limitations).
+Normal, PVC and AFib work well enough to demonstrate. LBBB, RBBB and Other are unreliable on new patients. The test set has been evaluated three times; see [docs/RESULTS.md](docs/RESULTS.md#how-the-numbers-were-obtained-three-evaluation-rounds). See [Known limitations](#known-limitations).
 
 ## How it works
 
@@ -68,7 +68,7 @@ Full contracts, latency budget and design decisions: [docs/ARCHITECTURE.md](docs
 | AFib | N during an AFIB rhythm |
 | LBBB | L |
 | RBBB | R |
-| Other | A, a, J, S, e, E, j, F, f, and N during flutter |
+| Other | A, a, J, S (supraventricular premature beats). F, e, E, j and flutter beats are not used. |
 
 ## Results at a glance
 
@@ -77,21 +77,21 @@ These figures come from held-out test patients. Source data is in `results/*.jso
 | Capability | Result | Verdict |
 |---|---|---|
 | R-peak detection (44 MIT-BIH records, 100,460 beats) | Sensitivity 99.11%, PPV 99.59% | Works well |
-| PVC detection | Beat F1 0.87 on MIT-BIH test patients | Works well |
-| AFib vs normal rhythm | Recall 77%, precision 82% on rhythm windows | Usable |
-| Signal quality gating | False alarms 78.5 → 0.7 per hour at -6 dB muscle noise | Works well |
-| LBBB, RBBB | Precision 0.85–0.91, recall 0.48–0.64 on PTB-XL; much worse on MIT-BIH | **Unreliable** |
-| "Other" class | Recall 3% | **Does not work** |
+| PVC detection | Beat F1 0.85 on MIT-BIH test patients | Works well |
+| AFib vs normal rhythm | Recall 77%, precision 83% on rhythm windows | Usable |
+| Signal quality gating | False alarms 71.0 → 0.7 per hour at -6 dB muscle noise | Works well |
+| LBBB, RBBB | Precision 0.91–1.00, recall 0.61–0.72 on PTB-XL; much worse on MIT-BIH. The CNN calls some normal AF-database beats RBBB. | **Unreliable** |
+| "Other" (supraventricular premature beats) | Precision 0.57, recall 14% on MIT-BIH test patients | **Weak** |
 | ESP32 fit | 17 KB model, 3.7 KB tensor arena, 27% RAM, 41% flash | Fits comfortably |
 
-**Classifier comparison** (123 test patients, 100,522 beats, each classifier followed by the AF rule, as on the device):
+**Classifier comparison** (123 test patients, 99,234 beats, each classifier followed by the AF rule, as on the device):
 
 | Metric | 1D CNN (int8) | Random Forest |
 |---|---:|---:|
-| Accuracy | 73.4% | 68.2% |
-| Macro precision | 0.474 | 0.463 |
-| Macro recall | 0.491 | 0.499 |
-| Macro F1 | 0.473 | 0.455 |
+| Accuracy | 71.6% | 70.9% |
+| Macro precision | 0.585 | 0.472 |
+| Macro recall | 0.551 | 0.526 |
+| Macro F1 | 0.529 | 0.486 |
 | Model size | 17 KB, 9,574 parameters | 105 KB, 30 trees, 11,970 nodes |
 | Inference time on ESP32 | Not measured yet (estimate 40–60 ms) | Not measured yet |
 

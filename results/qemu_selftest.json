@@ -43,16 +43,16 @@
     "rhythm": "PVC",
     "cnn": [
      20,
-     33,
-     29,
+     39,
+     26,
      0,
      0,
-     3
+     0
     ],
     "rf": [
-     20,
-     37,
-     28,
+     24,
+     29,
+     32,
      0,
      0,
      0
@@ -61,11 +61,11 @@
    "esp32": {
     "detected": "96",
     "analysed": "85",
-    "alert_beats": "64",
+    "alert_beats": "74",
     "rhythm": "PVC",
     "rhythm_rf": "AFib",
-    "cnn": "20 33 29 0 0 3",
-    "rf": "20 37 28 0 0 0"
+    "cnn": "20 39 26 0 0 0",
+    "rf": "24 29 32 0 0 0"
    }
   },
   {
@@ -75,19 +75,19 @@
     "analysed": 95,
     "rhythm": "AFib",
     "cnn": [
-     66,
-     0,
-     22,
-     0,
-     0,
-     7
-    ],
-    "rf": [
      73,
      0,
      22,
      0,
      0,
+     0
+    ],
+    "rf": [
+     72,
+     0,
+     22,
+     0,
+     1,
      0
     ]
    },
@@ -97,8 +97,8 @@
     "alert_beats": "2",
     "rhythm": "AFib",
     "rhythm_rf": "AFib",
-    "cnn": "66 0 22 0 0 7",
-    "rf": "73 0 22 0 0 0"
+    "cnn": "73 0 22 0 0 0",
+    "rf": "72 0 22 0 1 0"
    }
   },
   {
@@ -108,18 +108,18 @@
     "analysed": 61,
     "rhythm": "Normal",
     "cnn": [
-     51,
-     1,
+     24,
+     2,
      0,
-     9,
+     35,
      0,
      0
     ],
     "rf": [
-     43,
+     42,
      1,
      0,
-     17,
+     18,
      0,
      0
     ]
@@ -127,11 +127,11 @@
    "esp32": {
     "detected": "71",
     "analysed": "61",
-    "alert_beats": "0",
+    "alert_beats": "17",
     "rhythm": "Normal",
     "rhythm_rf": "Normal",
-    "cnn": "50 1 0 10 0 0",
-    "rf": "43 1 0 17 0 0"
+    "cnn": "24 2 0 35 0 0",
+    "rf": "42 1 0 18 0 0"
    }
   },
   {
@@ -139,32 +139,32 @@
    "host": {
     "detected": 84,
     "analysed": 74,
-    "rhythm": "Normal",
+    "rhythm": "RBBB",
     "cnn": [
-     73,
+     27,
      0,
      0,
      0,
-     1,
+     47,
      0
     ],
     "rf": [
-     33,
+     36,
      0,
      0,
      0,
-     41,
+     38,
      0
     ]
    },
    "esp32": {
     "detected": "84",
     "analysed": "74",
-    "alert_beats": "0",
-    "rhythm": "Normal",
+    "alert_beats": "33",
+    "rhythm": "RBBB",
     "rhythm_rf": "RBBB",
-    "cnn": "73 0 0 0 1 0",
-    "rf": "33 0 0 0 41 0"
+    "cnn": "27 0 0 0 47 0",
+    "rf": "36 0 0 0 38 0"
    }
   },
   {
@@ -209,7 +209,7 @@
   "count": "240",
   "cnn_match": "240",
   "rf_match": "240",
-  "max_score_diff": "6"
+  "max_score_diff": "7"
  },
  "failures": [],
  "passed": true

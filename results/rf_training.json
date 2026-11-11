@@ -4,7 +4,7 @@
   "max_depth": 10,
   "max_leaf_nodes": 200
  },
- "val_macro_f1": 0.5527557110736415,
+ "val_macro_f1": 0.5798370024795214,
  "nodes": 11970,
  "flash_kb": 105.205078125
 }

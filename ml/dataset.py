@@ -45,8 +45,12 @@ PTB_LOOPS = 4  # 10 s records are looped so the rhythm history and template can 
 MATCH_TOL = int(0.15 * FS)  # AAMI EC38 beat matching window, 150 ms
 DELAY = 3  # Group delay of the core's filter chain at QRS frequencies, in samples
 
-SUPRAVENT_ETC = set("aAJSeEjFf")  # Everything else from the annotation set maps to Other
+# Other means supraventricular premature beats only. Fusion (F), escape (e, E, j), unclassifiable
+# beats and N beats during flutter have nothing in common with them or each other, so they get no
+# label. They stay in BEAT_SYMBOLS so a detected beat near one is not matched to a neighbour.
+SUPRAVENT_PREMATURE = set("aAJS")
 BEAT_SYMBOLS = set("NLRVaAJSeEjFf/Q")
+PTB_PREMATURE_RR = 0.85  # PTB-XL PAC records: a beat is labelled Other when rr_pre / median RR is below this
 
 
 def ensure_mitdb():
@@ -87,9 +91,9 @@ def map_label(sym, rhythm):
         if rhythm.startswith("(AFIB"):
             return 2
         if rhythm.startswith("(AFL"):
-            return 5
+            return -1
         return 0
-    if sym in SUPRAVENT_ETC:
+    if sym in SUPRAVENT_PREMATURE:
         return 5
     return -1
 
@@ -149,13 +153,18 @@ def load_incart(rec):
 
 
 def ptb_beats(row, name):
-    """Beats from a looped 10 s lead II record. The whole record carries one label."""
+    """Beats from a looped 10 s lead II record. The whole record carries one label.
+
+    The exception is an Other (PAC) record: only one or two of its beats are premature, so only
+    beats that arrive early are labelled. These are weak labels, used for training only."""
     r = wfdb.rdrecord(str(RAW / "ptbxl" / row.filename_hr), channel_names=["II"])
     sig = to_fs(r.p_signal[:, 0], r.fs)
     n = len(sig)
     beats, _, _ = run_core(np.tile(sig, PTB_LOOPS))
     # Third pass only, clear of the start-up period and of the join between loops
     keep = (beats["r_index"] >= 2 * n + FS // 2) & (beats["r_index"] < 3 * n - FS // 2)
+    if row.lab == "Other":
+        keep &= beats["ctx"][:, 0] < PTB_PREMATURE_RR
     labels = np.where(keep, CLASSES.index(row.lab), -1)
     return pack(beats, labels, name)
 
@@ -237,6 +246,7 @@ def main():
     print("incart done", flush=True)
     sel = pd.read_csv(PTB_SELECTION)
     sel = sel[sel.lab != "AFib"]  # Too few clean AF records; AF comes from the AF database
+    sel = sel[~((sel.lab == "Other") & (sel.strat_fold == 10))]  # Weak labels never enter the test set
     parts["test_ptb"] = []
     for row in sel.itertuples():
         name = "test_ptb" if row.strat_fold == 10 else ("val" if row.strat_fold == 9 else "train")
